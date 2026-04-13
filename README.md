@@ -18,12 +18,40 @@ Dự án nghiên cứu và triển khai hệ thống điều khiển tưới câ
 * `src/`: Code Python huấn luyện MLP và cấu trúc luật mờ.
 * `esp32/`: Code triển khai thực tế trên vi điều khiển.
 
-##  Sơ đồ kết nối (Pinout)
-| Linh kiện | Chân ESP32 | Ghi chú |
-| :--- | :--- | :--- |
-| **Cảm biến DHT11** | GPIO 4 | Đo nhiệt độ & độ ẩm không khí |
-| **Cảm biến Độ ẩm đất** | GPIO 36 (VP) | Đo độ ẩm đất (Analog) |
-| **Module Relay (IN)** | GPIO 5 | Điều khiển máy bơm |
+## SƠ ĐỒ KẾT NỐI CHI TIẾT (HARDWARE PINOUT)
+Hệ thống sử dụng Kit ESP32 38-Pin Type-C. Việc kết nối chính xác các chân tín hiệu và nguồn là yếu tố then chốt để AI vận hành ổn định.
+
+1. Cảm biến Nhiệt độ & Độ ẩm (DHT11)
+
+Chân VCC: Nối vào chân 3V3 hoặc 5V trên ESP32.
+
+Chân GND: Nối vào chân GND trên ESP32.
+
+Chân DATA: Nối vào chân GPIO 4 trên ESP32.
+
+2. Cảm biến Độ ẩm đất (Soil Moisture Sensor)
+
+Chân VCC: Nối vào chân 3V3 hoặc 5V trên ESP32.
+
+Chân GND: Nối vào chân GND trên ESP32.
+
+Chân AO (Analog Output): Nối vào chân GPIO 36 (VP) trên ESP32.
+
+3. Module Relay điều khiển máy bơm
+
+Chân VCC: Nối vào chân 5V (Vin) trên ESP32 (Cấp nguồn 5V giúp Relay đóng ngắt dứt điểm).
+
+Chân GND: Nối vào chân GND trên ESP32.
+
+Chân IN (Tín hiệu): Nối vào chân GPIO 5 trên ESP32.
+
+4. Sơ đồ đấu nối động cơ (Máy bơm)
+
+Cực Dương (+) của nguồn ngoài: Nối vào cổng COM (chân giữa) của Relay.
+
+Cực Dương (+) của Máy bơm: Nối vào cổng NO (chân bên trái) của Relay.
+
+Cực Âm (-) của nguồn ngoài và cực Âm (-) của Máy bơm: Nối trực tiếp với nhau.
 
 ##  Logic vận hành
 ### 1. Model MLP (Hoàng Quốc Huy)
