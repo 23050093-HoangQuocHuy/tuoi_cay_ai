@@ -53,5 +53,5 @@ else:
 
     print("--------------------------------------------------")
     print(f"Đã lưu bộ não AI thành công tại: {model_path}")
-    print("BƯỚC TIẾP THEO: Huy hãy chạy file convert_to_header.py nhé!")
+    print("BƯỚC TIẾP THEO: chạy file convert_to_header.py")
     print("--------------------------------------------------")
